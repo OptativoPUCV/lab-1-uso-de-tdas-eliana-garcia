@@ -1,0 +1,20 @@
+modules = ["c-clang14", "bash"]
+
+[nix]
+channel = "stable-24_05"
+
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Run"
+author = 40765176
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "gcc test.c -Wall -Werror -o a.out"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "./a.out"
